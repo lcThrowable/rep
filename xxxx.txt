@@ -1,0 +1,14 @@
+select 
+        
+        lc.bankplace bankplace 
+    
+         from Lduser l left join Ldcom lc on l.companycode = lc.comcode 
+         left join Areacodefull a on lc.address = a.citycode  where l.emplid = 'ybt'
+          union
+          select
+          ld.bankplace bankplace 
+          from piplinebranch p
+          left join lduser lu on p.staffid = lu.emplid
+          left join ldcom  ld on ld.comcode = p.branchcode
+          where p.staffid='ybt'
+          and ld.bankplace is not null 
