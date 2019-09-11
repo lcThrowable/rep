@@ -12,3 +12,13 @@ select
           left join ldcom  ld on ld.comcode = p.branchcode
           where p.staffid='ybt'
           and ld.bankplace is not null 
+
+
+
+
+
+ select l.* from Lduser l 
+       left join ldusertomenugrp  lm  on lm.usercode  = l.emplid 
+         left join ldmenugrpa lg        on lm.menugrpcode   = lg.menugrpcode
+          left join Piplinebranch p      on l.emplid      = p.staffid
+          where lg.menugrpname ='PE'
