@@ -52,4 +52,28 @@ select
         left join lduser lu on p.staffid = lu.emplid
         left join ldcom  ld on ld.comcode = p.branchcode
          where p.staffid='ybt'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+select new  com.sinosoft.pipline.bean.piplineinfo.PiplineInfoBean(l,p,lcont) 
+				 from Piplineinfo p left join Lccont l on p.transno = l.id.transno 
+				left join Lcnotconclusion lcont on lcont.contno=l.proposalcontno 
+				where p.autodropflag='0'
          
