@@ -1,0 +1,107 @@
+select 
+        
+        lc.bankplace bankplace 
+    
+         from Lduser l left join Ldcom lc on l.companycode = lc.comcode 
+         left join Areacodefull a on lc.address = a.citycode  where l.emplid = 'ybt'
+          union
+          select
+          ld.bankplace bankplace 
+          from piplinebranch p
+          left join lduser lu on p.staffid = lu.emplid
+          left join ldcom  ld on ld.comcode = p.branchcode
+          where p.staffid='ybt'
+          and ld.bankplace is not null 
+
+
+
+
+
+ select l.* from Lduser l 
+       left join ldusertomenugrp  lm  on lm.usercode  = l.emplid 
+         left join ldmenugrpa lg        on lm.menugrpcode   = lg.menugrpcode
+          left join Piplinebranch p      on l.emplid      = p.staffid
+          where lg.menugrpname ='PE'
+
+
+
+
+
+
+
+
+  
+        select
+        l.name name,
+        lc.dvcode dvcode,
+        lc.comcode comcode,
+        lc.bankplace bankplace,
+        a.cityname address,
+        lc.comname  comname
+        from Lduser l left join Ldcom lc on l.companycode = lc.comcode
+        left join Areacodefull a on lc.address = a.citycode  where l.emplid = 'ybt'       
+        union
+        select
+       lu.name name,
+       ld.dvcode dvcode,
+         p.branchcode comcode,
+       ld.bankplace bankplace,
+         p.branchname shortname,
+         ld.comname comname
+         from piplinebranch p
+        left join lduser lu on p.staffid = lu.emplid
+        left join ldcom  ld on ld.comcode = p.branchcode
+         where p.staffid='ybt'
+
+
+
+
+
+
+
+
+
+
+
+String sql = "select "
+				+ "l.name name,"
+				+ "lc.dvcode dvcode,"
+				+ "lc.comcode comcode,"
+				+ "lc.bankplace bankplace,"
+			/*	+ "a.cityname address,"*/
+				+ "lc.comname  comname "
+				+ "from Lduser l left join Ldcom lc on l.companycode = lc.comcode "
+				+ "left join Areacodefull a on lc.address = a.citycode  where l.emplid = '"
+				+ userid				
+				+ "'"
+				+ " union"
+				+ " select"
+				+ " lu.name name,"
+				+ " ld.dvcode dvcode,"
+				+ " p.branchcode comcode,"
+				+ " ld.bankplace bankplace,"
+			/*	+ " p.branchname shortname,"*/
+				+ " ld.comname comname"
+				+ " from piplinebranch p"
+				+ " left join lduser lu on p.staffid = lu.emplid"
+				+ " left join ldcom  ld on ld.comcode = p.branchcode"
+				+ " where p.staffid='"
+				+ userid
+				+ "'";			
+
+
+
+
+
+
+
+
+
+
+
+
+select new  com.sinosoft.pipline.bean.piplineinfo.PiplineInfoBean(l,p,lcont) 
+				 from Piplineinfo p left join Lccont l on p.transno = l.id.transno 
+				left join Lcnotconclusion lcont on lcont.contno=l.proposalcontno 
+				where p.autodropflag='0'
+         
