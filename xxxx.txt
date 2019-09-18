@@ -152,4 +152,46 @@ select new  com.sinosoft.pipline.bean.piplineinfo.PiplineInfoBean(l,p,lcont)
             piplineinf0_.PIPLINENO desc ) 
     where
         rownum <= ?
+
+
+
+
+
+
+
+
+
+
+
+
+          select
+        * 
+    from
+        ( select
+            lccont1_.CONTNO as col_0_0_,
+            lccont1_.TRANSNO as col_0_1_,
+            piplineinf0_.PIPLINENO as col_1_0_,
+            lcnotconcl2_.CONTNO as col_2_0_ 
+        from
+            PIPLINEINFO piplineinf0_ 
+        left outer join
+            LCCONT lccont1_ 
+                on (
+                    piplineinf0_.TRANSNO=lccont1_.TRANSNO
+                )
+        left outer join
+            LCNOTCONCLUSION lcnotconcl2_ 
+                on (
+                    lcnotconcl2_.CONTNO=lccont1_.PROPOSALCONTNO
+                ) 
+        where
+            piplineinf0_.AUTODROPFLAG='0' 
+            and piplineinf0_.BANKPLACE=? 
+            and piplineinf0_.CITYDIVISION=? 
+            and piplineinf0_.RMID=? 
+            and piplineinf0_.BRANCH=? 
+        order by
+            piplineinf0_.PIPLINENO desc ) 
+    where
+        rownum <= ?
          
