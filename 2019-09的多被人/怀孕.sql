@@ -10,3 +10,10 @@ update formelement set text='怀孕(周)',name='noticeinfo1' where sid='INSHnotice'
 
 insert into formelement (SID, ID, NAME, TEXT, TYPE, ENGLISHTEXT, CHECKBOXOPTION, GROUPID, PARENTID, NOTICEELEMENTGROUP, CSSCLASS)
 values ('INSHnotice', 'notice28q4', 'noticeinfo4', '被保人2怀孕(周)', 'text', null, null, 'noticePregnancyInsu', 'notice28', 'noticeInfo', null);
+
+
+
+
+
+
+
